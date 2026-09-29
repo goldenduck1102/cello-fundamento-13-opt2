@@ -160,3 +160,17 @@
   });
   selectTier('vip');
 })();
+
+// Two artist scenes share a five-second progress clock.
+(()=>{
+ const root=document.querySelector('.artist-rotation');if(!root)return;
+ const panels=[...root.querySelectorAll('[data-artist-panel]')],buttons=[...root.querySelectorAll('[data-artist-slide]')],bar=root.querySelector('.artist-rotation__progress span');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ let index=0,visible=false,elapsed=0,last=0,frame=0;
+ function show(n){index=n;elapsed=0;bar.style.transform='scaleX(0)';panels.forEach((p,i)=>{p.classList.toggle('is-active',i===n);p.inert=i!==n;p.setAttribute('aria-hidden',String(i!==n));});buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===n)));}
+ function tick(now){const delta=last?now-last:0;last=now;if(!panels[index].contains(document.activeElement)){elapsed+=delta;if(elapsed>=5000)show(1-index);bar.style.transform=`scaleX(${elapsed/5000})`;}frame=requestAnimationFrame(tick);}
+ function sync(){cancelAnimationFrame(frame);last=0;if(visible&&!document.hidden&&!reduced.matches)frame=requestAnimationFrame(tick);}
+ buttons.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
+ new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();},{threshold:.15}).observe(root);
+ document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);show(0);
+})();

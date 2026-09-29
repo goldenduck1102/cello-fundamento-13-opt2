@@ -45,7 +45,7 @@
     "image": "assets/img/og-image.jpg"
   }
   </script>
-<link rel="stylesheet" href="css/option2-content.css?v=20260929-brand">
+<link rel="stylesheet" href="css/option2-content.css?v=20260929-approved">
 <link rel="icon" href="assets/orchestars-favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -140,10 +140,9 @@
     <section class="intro" id="intro">
       <div class="container intro__inner">
         <p class="intro__kicker reveal">Mischa Maisky in Vietnam</p>
-        <blockquote class="intro__quote reveal">
-          “Một trong những nghệ sĩ cello có sức ảnh hưởng hàng đầu thế giới — phong cách trình diễn
-          <em>mãnh liệt, giàu cảm xúc và đầy chất thơ</em>.”
-        </blockquote>
+        <h2 class="intro__quote reveal">Domenico Montagnana Cello<br><em>Từ một tiếng đàn đến những cuộc gặp gỡ</em></h2>
+        <p class="intro__story reveal">Lần đầu tiên tại Hà Nội, Mischa Maisky cùng cây cello Domenico Montagnana chế tác năm 1720 mang đến một đêm nhạc thính phòng tại Nhà hát Hồ Gươm. Gắn bó với ông từ sau buổi diễn tại Carnegie Hall năm 1973, cây đàn cất lên qua lối diễn tấu mãnh liệt mà giàu chất thơ — hòa cùng tiếng piano của Lily Maisky, violin của Nicolas Dautricourt và cello của Đinh Hoài Xuân.</p>
+        <p class="intro__value reveal">Giá trị cây đàn: <strong>5 triệu USD</strong></p>
         
       </div>
     </section>
@@ -156,7 +155,7 @@
           <h2 class="section__title">Bốn giọng đàn, <em>một đêm nhạc</em></h2>
         </header>
 
-        <article class="artist artist--feature reveal">
+        <div class="artist-rotation" aria-label="Giới thiệu nghệ sĩ"><div class="artist-rotation__controls"><button type="button" data-artist-slide="0" aria-pressed="true">Mischa Maisky</button><button type="button" data-artist-slide="1" aria-pressed="false">Nghệ sĩ đồng hành</button></div><div class="artist-rotation__progress" aria-hidden="true"><span></span></div><div class="artist-rotation__stage"><article class="artist artist--feature artist-panel is-active" data-artist-panel>
           <div class="artist__media">
             <div class="artist__disc" aria-hidden="true"></div>
             <img src="assets/img/artists/mischa-maisky.webp" alt="Nghệ sĩ cello Mischa Maisky" width="702" height="706" loading="lazy" />
@@ -164,18 +163,13 @@
           <div class="artist__body">
             <p class="artist__role">Nghệ sĩ Cello · Khách mời đặc biệt</p>
             <h3 class="artist__name">Mischa <span>Maisky</span></h3>
-            <p>
-              Mischa Maisky là một trong những nghệ sĩ cello có sức ảnh hưởng hàng đầu thế giới, nổi bật với phong
-              cách trình diễn mãnh liệt, giàu cảm xúc và đầy chất thơ. Sự xuất hiện của ông tại Cello Fundamento 13
-              hứa hẹn mang đến một dấu ấn đặc biệt, góp phần đưa nghệ thuật cello đỉnh cao đến gần hơn với công chúng
-              Việt Nam.
-            </p>
+            <p>Mischa Maisky là một nghệ sĩ cello người Israel gốc Latvia với phong cách chơi mạnh mẽ và giàu cảm xúc. Ông chơi cây cello Domenico Montagnana chế tác năm 1720. Maisky đã thu âm và biểu diễn cùng nhiều dàn nhạc và nhạc trưởng hàng đầu thế giới, tạo dựng được danh tiếng nhờ những màn trình diễn đầy nhiệt huyết.</p>
             <a href="https://orchestars.vn/" class="link-arrow" data-track="artist_cta">Khám phá hạng vé</a>
           </div>
         </article>
 
-        <div class="artists__grid">
-          <article class="artist reveal">
+        <div class="artists__grid artist-panel" data-artist-panel inert aria-hidden="true">
+          <article class="artist">
             <div class="artist__media">
               <img src="assets/img/artists/lily-maisky.webp" alt="Nghệ sĩ piano Lily Maisky" width="682" height="1024" loading="lazy" />
             </div>
@@ -190,7 +184,7 @@
             </div>
           </article>
 
-          <article class="artist reveal">
+          <article class="artist">
             <div class="artist__media">
               <img src="assets/img/artists/nicolas-dautricourt.webp" alt="Nghệ sĩ violin Nicolas Dautricourt" width="760" height="760" loading="lazy" />
             </div>
@@ -204,7 +198,7 @@
             </div>
           </article>
 
-          <article class="artist reveal">
+          <article class="artist">
             <div class="artist__media">
               <img src="assets/img/artists/dinh-hoai-xuan.webp" alt="Nghệ sĩ cello Đinh Hoài Xuân" width="653" height="980" loading="lazy" />
             </div>
@@ -218,6 +212,7 @@
             </div>
           </article>
         </div>
+        </div></div>
       </div>
     </section>
 
@@ -408,6 +403,6 @@
   <script src="js/seats.js"></script>
 <script src="js/tiers.js"></script>
 <script src="js/config.js"></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=20260929-approved" defer></script>
 </body>
 </html>
