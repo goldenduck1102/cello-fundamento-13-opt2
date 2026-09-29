@@ -1,0 +1,112 @@
+/* New editorial content within the original Option 2 design. */
+.nav__links { gap: 18px; }
+.program { border-top: 1px solid var(--line-soft); }
+.programme-heading { text-align: center; margin: 0 auto 40px; }
+.programme-heading h2 { font: 400 clamp(34px, 5.2vw, 60px)/1.1 var(--serif); margin: 0 0 18px; }
+.programme-heading p { color: var(--ink-2); }
+.programme-parts { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.programme-part > h3 { color: var(--gold-hi); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.programme-work { border-bottom: 1px solid var(--line); }
+.programme-work summary { display: grid; grid-template-columns: 24px 1fr 20px; gap: 14px; align-items: baseline; padding: 18px 0; cursor: pointer; list-style: none; }
+.programme-work summary::-webkit-details-marker { display: none; }
+.programme-work summary > span { color: var(--gold); font-size: 13px; }
+.programme-work summary strong { display: block; font-weight: 500; font-size: 17px; }
+.programme-work summary small { display: block; font-size: 14px; color: var(--ink-2); margin-top: 5px; }
+.programme-work[open] .work-toggle { transform: rotate(45deg); }
+.work-detail { padding: 0 0 16px 38px; font-size: 15px; color: var(--ink-2); }
+.order .tier { width: 100%; text-align: left; color: var(--ink); font-family: var(--sans); }
+.tier[aria-pressed="true"] { border-color: var(--gold); background: linear-gradient(90deg, #d4a54724, #d4a54708); }
+.tier__area { color: var(--ink-2); }
+.seatmap { padding-top: 0; overflow: hidden; }
+.seatmap__stage { margin-bottom: 0; }
+.seatmap__selection { min-height: 52px; margin: 12px 0 0; text-align: center; font-size: 14px; color: var(--gold-hi); }
+#seatmap .seat-dot { cursor: pointer; transition: opacity .2s; }
+#seatmap.has-selection .seat-dot:not(.is-active) { opacity: .25; }
+#seatmap .seat-dot:hover { opacity: 1; }
+.order__fine { color: var(--ink-2); }
+@media (max-width: 1100px) { .nav__links { gap: 12px; } .nav__links a { font-size: 11px; } }
+@media (max-width: 760px) { .programme-parts { grid-template-columns: 1fr; gap: 28px; } .programme-heading { text-align: left; } .seatmap { padding-top: 0; } }
+
+/* Programme follows performance order; one reading axis avoids a 5/2 split. */
+.programme { max-width: 1080px; }
+.programme-parts { display: block; }
+.programme-part { display: grid; grid-template-columns: 165px minmax(0,1fr); column-gap: 36px; }
+.programme-part + .programme-part { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+.programme-part > h3 { grid-column: 1; grid-row: 1 / span 6; margin: 20px 0 0; }
+.programme-work { grid-column: 2; }
+.programme-work summary { padding: 16px 0; }
+.programme-work summary > span:nth-child(2) { display: grid; grid-template-columns: minmax(180px,1fr) 1.15fr; align-items: baseline; gap: 24px; }
+.programme-work summary small { margin: 0; }
+.programme-work summary strong { color: var(--ink); }
+.programme-work summary:hover strong { color: var(--gold-hi); }
+
+/* One balanced ticket composition, with a shared booking action below. */
+.tickets__layout { grid-template-columns: 1.1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 20px 20px 0 0; overflow: hidden; align-items: stretch; background: var(--bg); }
+.tickets__layout .seatmap { position: static; border: 0; border-radius: 0; padding: 0 24px 24px; display: flex; flex-direction: column; justify-content: flex-start; }
+.tickets__layout .order { border: 0; border-left: 1px solid var(--line); border-radius: 0; padding: 24px; background: transparent; backdrop-filter: none; }
+.order fieldset { margin: 0; }
+.order legend { margin-bottom: 16px; }
+.tier-list { gap: 6px; }
+.order .tier { padding: 10px 12px; gap: 10px; min-height: 62px; }
+.tier__name { font-size: 15px; }
+.tier__area { font-size: 11px; }
+.seatmap__selection { margin-top: auto; min-height: 44px; padding-top: 8px; }
+.seatmap__legend { gap: 8px 14px; }
+.seatmap__note { color: var(--ink-2); }
+.tickets__booking { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 22px 28px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 20px 20px; background: var(--bg); }
+.tickets__booking .order__fine { margin: 0; max-width: 650px; text-align: left; font-size: 13px; }
+.tickets__booking .btn { width: auto; min-width: 210px; flex-shrink: 0; }
+.footer__partners { align-items: start; gap: 56px; }
+.footer__ticket-partner img { max-width: 180px; object-fit: contain; }
+
+/* Slow, composited movement; pause offscreen and respect motion preferences. */
+.hero__portrait { animation: portrait-drift 9s ease-in-out infinite; }
+.hero__glow { animation: spotlight-drift 12s ease-in-out infinite alternate; }
+.hero__swirl { animation: ribbon-drift 14s ease-in-out infinite alternate; transform-origin: 60% 50%; }
+.hero.motion-paused *, .hero.motion-paused *::before, .hero.motion-paused *::after { animation-play-state: paused !important; }
+@keyframes portrait-drift { 50% { transform: translateY(-7px); } }
+@keyframes spotlight-drift { from { transform: scale(1); opacity: .4; } to { transform: scale(1.04) translateX(8px); opacity: .65; } }
+@keyframes ribbon-drift { to { transform: translateY(-10px) rotate(1.5deg); } }
+@media (max-width: 1024px) {
+ .tickets__layout { grid-template-columns: 1fr 1fr; }
+ .tickets__layout .order { padding: 20px 16px; }
+ .order .tier { grid-template-columns: auto 1fr; }
+ .order .tier__price { grid-column: 2; font-size: 17px; }
+ .tickets__layout .seatmap { justify-content: center; }
+ .seatmap__selection { margin-top: 16px; }
+}
+@media (max-width: 760px) {
+ .programme-part { display: block; }
+ .programme-part > h3 { margin: 0 0 12px; }
+ .programme-work summary > span:nth-child(2) { display: block; }
+ .programme-work summary small { margin-top: 4px; }
+ .programme-work summary { gap: 10px; }
+ .tickets__layout { grid-template-columns: 1fr; }
+ .tickets__layout .seatmap { padding: 0 16px 22px; }
+ .tickets__layout .order { border-left: 0; border-top: 1px solid var(--line); padding: 22px 16px; }
+ .order .tier { grid-template-columns: auto minmax(0,1fr) auto; }
+ .order .tier__price { grid-column: 3; font-size: 16px; }
+ .tier__area { font-size: 11px; }
+ .tickets__booking { flex-direction: column; gap: 16px; padding: 22px 20px; }
+ .tickets__booking .btn { width: 100%; }
+ .footer__partners { gap: 36px; }
+ .footer__ticket-partner { flex-basis: 100%; }
+ .hero__portrait { animation-name: portrait-drift-mobile; }
+ @keyframes portrait-drift-mobile { 50% { transform: translateY(-4px); } }
+}
+@media (prefers-reduced-motion: reduce) {
+ .hero__portrait, .hero__disc, .hero__glow, .hero__swirl { animation: none; }
+}
+
+.footer__ticket-partner img { filter: brightness(0) invert(1); opacity: .85; }
+
+/* Concert 13 uses the same poster and caption structure as the archive. */
+.season--upcoming { border-color: var(--gold); }
+.season--upcoming h3 { gap: 8px; }
+.season--upcoming h3 span { font-size: 10px; letter-spacing: .04em; }
+.season__booking { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; color: var(--gold-hi); font-size: 12px; font-weight: 600; text-decoration: none; }
+.season__booking:hover { text-decoration: underline; }
+
+/* Align the carousel viewport with the page content, keeping its own scroll. */
+.journey__viewport { min-width: 0; }
+.journey__viewport .journey__track { padding: 8px 0 24px; scroll-padding-inline: 0; }
