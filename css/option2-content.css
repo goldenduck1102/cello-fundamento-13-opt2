@@ -113,3 +113,6 @@
 
 /* Past concerts stay legible while the two Concert 13 cards remain prominent. */
 .season:not(.season--next):not(.season--upcoming) img { opacity: .55; filter: saturate(.55); }
+
+.nav__brand img.site-orchestars-logo{width:180px;height:auto;max-width:100%;object-fit:contain;filter:brightness(0) invert(1)}
+@media(max-width:680px){.nav__brand img.site-orchestars-logo{width:140px}}
