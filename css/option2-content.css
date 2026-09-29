@@ -110,3 +110,6 @@
 /* Align the carousel viewport with the page content, keeping its own scroll. */
 .journey__viewport { min-width: 0; }
 .journey__viewport .journey__track { padding: 8px 0 24px; scroll-padding-inline: 0; }
+
+/* Past concerts stay legible while the two Concert 13 cards remain prominent. */
+.season:not(.season--next):not(.season--upcoming) img { opacity: .55; filter: saturate(.55); }
